@@ -12,10 +12,9 @@ let activePlayer = (prev) => {
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  console.log(activePlayer(gameTurns));
+  const currentPlayer = activePlayer(gameTurns);
   const handleSelectSquare = (rowIndex, colIndex) => {
     setGameTurns((prev) => {
-      console.log(activePlayer(prev));
       return [
         {
           square: { row: rowIndex, col: colIndex },
@@ -30,12 +29,12 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            isActive={activePlayer(gameTurns) === "X"}
+            isActive={currentPlayer === "X"}
             initialName="Player 1"
             symbol="X"
           />
           <Player
-            isActive={activePlayer(gameTurns) === "O"}
+            isActive={currentPlayer === "O"}
             initialName="Player 2"
             symbol="O"
           />
