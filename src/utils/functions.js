@@ -34,8 +34,5 @@ export const calculateWinner = (gameBoardData, gameTurns) => {
 };
 
 export const deriveActivePlayer = (turns) => {
-  if (turns.length === 0) {
-    return "X";
-  }
-  return turns[0].player === "X" ? "O" : "X";
+  return turns[0]?.player === "X" ? "O" : "X";
 };
