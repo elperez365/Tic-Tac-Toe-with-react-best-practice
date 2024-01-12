@@ -109,7 +109,7 @@ h1 {
 
 .player-name {
   display: inline-block;
-  width: 10rem;
+  width: 6rem;
   font-size: 1rem;
   color: #e1dec7;
   text-transform: uppercase;
@@ -123,7 +123,7 @@ h1 {
 .player input {
   font: inherit;
   font-size: 1rem;
-  width: 10rem;
+  width: 6rem;
   border: none;
   padding: 0.5rem;
   animation: pulse-text 2s infinite;
@@ -163,7 +163,7 @@ ol {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 3rem 0;
   padding: 0;
   flex-direction: column;
@@ -179,12 +179,12 @@ ol {
 }
 
 #game-board button {
-  width: 8rem;
-  height: 8rem;
+  width: 4rem;
+  height: 4rem;
   border: none;
   background: #aca788;
   color: #3f3b00;
-  font-size: 5rem;
+  font-size: 2rem;
   cursor: pointer;
   font-family: "Caprasimo", cursive;
   padding: 1rem;
