@@ -12,9 +12,19 @@ import GameOver from "./components/GameOver";
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
+  const [players, setplayers] = useState({ X: "player1", O: "player2" });
+
   let gameBoardData = [...initialGameBoard.map((array) => [...array])];
   updateGameBoardData(gameTurns, gameBoardData);
   const winner = calculateWinner(gameBoardData, gameTurns);
+  const updatePlayerName = (symbol, name) => {
+    setplayers((prev) => {
+      return {
+        ...prev,
+        [symbol]: name,
+      };
+    });
+  };
   const handleSelectSquare = (rowIndex, colIndex) => {
     setGameTurns((prev) => {
       return [
@@ -37,16 +47,20 @@ function App() {
         <ol id="players" className="highlight-player">
           <Player
             isActive={deriveActivePlayer(gameTurns) === "X"}
-            initialName="Player 1"
+            initialName={players.X}
             symbol="X"
+            onChangeName={updatePlayerName}
           />
           <Player
             isActive={deriveActivePlayer(gameTurns) === "O"}
-            initialName="Player 2"
+            initialName={players.O}
             symbol="O"
+            onChangeName={updatePlayerName}
           />
         </ol>
-        {winner && <GameOver winner={winner} onRestart={handleRestartGame} />}
+        {winner && (
+          <GameOver winner={players[winner]} onRestart={handleRestartGame} />
+        )}
         <GameBoard onSelectSquare={handleSelectSquare} board={gameBoardData} />
       </div>
       <Log turns={gameTurns} />

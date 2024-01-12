@@ -1,10 +1,21 @@
 import { useState } from "react";
 import { FaEdit, FaRegSave } from "react-icons/fa";
 
-export default function Player({ initialName, symbol, isActive }) {
+export default function Player({
+  initialName,
+  symbol,
+  isActive,
+  onChangeName: updatePlayerName,
+}) {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(initialName);
 
+  const handleEdit = () => {
+    setIsEditing((prev) => !prev);
+    if (isEditing) {
+      updatePlayerName(symbol, playerName);
+    }
+  };
   return (
     <li className={isActive ? "active" : undefined}>
       <span className="player">
@@ -22,7 +33,7 @@ export default function Player({ initialName, symbol, isActive }) {
 
         <span className="player-symbol">{symbol}</span>
       </span>
-      <button className="button" onClick={() => setIsEditing((prev) => !prev)}>
+      <button className="button" onClick={handleEdit}>
         {isEditing ? <FaRegSave /> : <FaEdit />}
       </button>
     </li>
